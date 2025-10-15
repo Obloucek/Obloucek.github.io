@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kavárna u 4 zrnek • Místo, kde se káva potkává s duší</title>
+  <meta name="description" content="Kavárna u 4 zrnek – výběrová káva, domácí dobroty, studijní koutky a klid uprostřed města. Přijď na kávu, zůstaň pro klid." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    /* ----------------------
+       RESET + BASE STYLES
+    -----------------------*/
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";line-height:1.6;-webkit-font-smoothing:antialiased;background:radial-gradient(80vw 80vh at 10% 10%, #fff8f0 0%, #ffe6d6 30%, #f9f1e7 48%, #f5efe9 60%, #f2ede8 100%)}
+    :root{--bg:#f7f3ee;--ink:#1f1a17;--muted:#6f655e;--brand:#7a4a22;--accent:#b87945;--cream:#fff8f0;--card:rgba(255,255,255,.7);--stroke:rgba(30,18,6,.08);--shadow:0 10px 30px rgba(72,49,28,.15)}
+    @media (prefers-color-scheme: dark){
+      body{background:radial-gradient(80vw 80vh at 10% 10%, #171311 0%, #1b1714 35%, #1f1a17 60%, #231e1a 100%)}
+      :root{--bg:#1d1916;--ink:#f7f3ee;--muted:#bcb4ad;--brand:#d49b6a;--accent:#e5b488;--cream:#2a231e;--card:rgba(36,30,26,.6);--stroke:rgba(255,240,226,.08);--shadow:0 10px 30px rgba(0,0,0,.4)}
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .container{width:min(1100px, 92%);margin-inline:auto}
+
+    /* ----------------------
+       NAVBAR
+    -----------------------*/
+    header{position:fixed;inset-block-start:0;inset-inline:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,0));backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--stroke)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:.7rem;align-items:center;font-weight:700;letter-spacing:.2px}
+    .beans{display:inline-grid;grid-template-columns:repeat(4, 10px);gap:6px}
+    .bean{width:10px;height:16px;border-radius:10px;background:linear-gradient(160deg, var(--brand), var(--accent));box-shadow:inset 0 -1px 0 rgba(0,0,0,.2)}
+    nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1}
+    .mobile-toggle{display:none;border:1px solid var(--stroke);background:var(--card);padding:.5rem;border-radius:.6rem}
+    @media (max-width:860px){
+      nav ul{display:none}
+      .mobile-toggle{display:inline-flex}
+      .mobile-menu{position:absolute;inset-inline:0;inset-block-start:56px;background:var(--card);backdrop-filter:blur(8px);border-bottom:1px solid var(--stroke);display:none}
+      .mobile-menu ul{display:grid;gap:0;list-style:none;margin:0}
+      .mobile-menu a{display:block;padding:14px 22px;border-top:1px solid var(--stroke)}
+      .mobile-menu.show{display:block}
+    }
+
+    /* ----------------------
+       HERO
+    -----------------------*/
+    .hero{padding:120px 0 70px;position:relative;overflow:hidden}
+    .hero .container{display:grid;grid-template-columns: 1.05fr .95fr;gap:40px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:.6rem;font-size:.9rem;color:var(--brand);background:linear-gradient(180deg, var(--cream), transparent);border:1px solid var(--stroke);border-radius:999px;padding:6px 12px}
+    .badge svg{width:16px;height:16px}
+    h1{font-size:clamp(36px, 5vw, 56px);line-height:1.08;margin:.2rem 0 .8rem;color:var(--ink)}
+    .lead{font-size:clamp(15px, 2.1vw, 18px);color:var(--muted);max-width:60ch}
+    .cta{display:flex;gap:12px;margin-top:22px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:12px 16px;border-radius:14px;border:1px solid var(--stroke);background:var(--card);box-shadow:var(--shadow);cursor:pointer}
+    .btn.primary{background:linear-gradient(180deg, var(--accent), var(--brand));color:white;border:none}
+    .btn:hover{transform:translateY(-1px)}
+
+    .hero-card{position:relative;isolation:isolate;background:var(--card);border:1px solid var(--stroke);border-radius:24px;box-shadow:var(--shadow);padding:22px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .stat{background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.2));border:1px solid var(--stroke);padding:16px;border-radius:16px}
+    .stat b{font-size:1.6rem;display:block}
+    .stamp{position:absolute;right:-18px;bottom:-18px;transform:rotate(-8deg);background:var(--cream);border:2px dashed var(--accent);border-radius:999px;padding:14px 18px;font-weight:700;color:var(--brand)}
+    @media (max-width:860px){
+      .hero .container{grid-template-columns:1fr}
+      .hero-card{order:-1}
+    }
+
+    /* ----------------------
+       SECTIONS
+    -----------------------*/
+    section{padding:60px 0}
+    .title{font-size:clamp(26px, 3.6vw, 36px);margin:0 0 10px;color:var(--ink)}
+    .sub{color:var(--muted);max-width:65ch}
+
+    .cards{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:18px;box-shadow:var(--shadow);padding:18px}
+    .card h3{margin:6px 0 6px;font-size:1.1rem;color:var(--ink)}
+    .card p{margin:0;color:var(--muted)}
+    @media (max-width:960px){.cards{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.cards{grid-template-columns:1fr}}
+
+    /* Menu grid */
+    .menu{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .menu-group{background:var(--card);border:1px solid var(--stroke);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .menu-group h3{margin:0 0 10px}
+    .menu-item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--stroke)}
+    .menu-item:last-child{border-bottom:0}
+    .price{white-space:nowrap;color:var(--ink);font-weight:600}
+
+    /* Gallery */
+    .gallery{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .tile{aspect-ratio:1/1.1;background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.02));border:1px solid var(--stroke);border-radius:14px;overflow:hidden;position:relative}
+    .tile::after{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 20%, rgba(255,255,255,.5), transparent 60%)}
+    @media (max-width:960px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:640px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+    /* Contact */
+    .contact-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;margin-top:20px}
+    .contact-card{background:var(--card);border:1px solid var(--stroke);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .field{display:grid;gap:6px;margin:10px 0}
+    .input, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--stroke);background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.6));color:var(--ink)}
+    textarea{min-height:120px;resize:vertical}
+
+    /* Footer */
+    footer{padding:40px 0 60px;color:var(--muted)}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+    .foot{background:var(--card);border:1px solid var(--stroke);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .credits{margin-top:12px;font-size:.9rem}
+
+    /* Tiny animations */
+    [data-animate]{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+    [data-animate].in{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="Kavárna u 4 zrnek">
+        <span class="beans" aria-hidden="true">
+          <span class="bean"></span><span class="bean"></span><span class="bean"></span><span class="bean"></span>
+        </span>
+        <span>Kavárna u 4 zrnek</span>
+      </a>
+      <nav aria-label="Hlavní navigace">
+        <ul>
+          <li><a href="#o-nas">O nás</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otevřít menu">
+        <!-- simple hamburger -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <ul>
+        <li><a href="#o-nas">O nás</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="container">
+      <div>
+        <span class="badge" data-animate>
+          <!-- bean icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M12 3c4.4 0 8 3.6 8 8 0 5.5-4.5 10-10 10-4.4 0-8-3.6-8-8 0-5.5 4.5-10 10-10Zm2.2 4.4c-2.2.2-3.9 1.9-4.1 4.1-.1 1.1-.5 2.1-1.3 2.9-1.4 1.4-1.5 3.6-.2 5.1 1.3-1.4 3.1-2.3 5.1-2.4 2.2-.2 3.9-1.9 4.1-4.1.1-1.1.5-2.1 1.3-2.9 1.4-1.4 1.5-3.6.2-5.1-1.3 1.4-3.1 2.3-5.1 2.4Z"/></svg>
+          Výběrová káva • Domácí dobroty • Klid na duši
+        </span>
+        <h1 data-animate>Místo, kde se káva potkává s duší.</h1>
+        <p class="lead" data-animate>
+          U 4 zrnek věříme, že každé kávové zrnko má svůj příběh — a že čtyři dohromady tvoří harmonii chutí, vůní a lidí. Je to útočiště pro studenty, tvůrce i snílky. Přijď na kávu, zůstaň pro klid.
+        </p>
+        <div class="cta" data-animate>
+          <a class="btn primary" href="#menu">Podívat se na menu</a>
+          <a class="btn" href="#kontakt">Rezervace & Kontakt</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Shrnutí" data-animate>
+        <div class="hero-grid">
+          <div class="stat"><b>4</b> zrnka, 1 srdce kavárny</div>
+          <div class="stat"><b>8:00–20:00</b> otevřeno denně</div>
+          <div class="stat"><b>Wi‑Fi & zásuvky</b> studijní koutky</div>
+          <div class="stat"><b>Veganské</b> i bezlaktózové volby</div>
+        </div>
+        <div class="stamp">Poctivě praženo</div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- O NÁS -->
+  <section id="o-nas">
+    <div class="container">
+      <h2 class="title" data-animate>O nás</h2>
+      <p class="sub" data-animate>
+        Káva pro nás není jen nápoj. Je to rituál, pauza, rozhovor i ticho. Žádné fast coffee, žádná přetvářka – jen poctivá práce, otevřené srdce a čtyři zrnka, která to celé drží pohromadě.
+      </p>
+      <div class="cards">
+        <article class="card" data-animate>
+          <h3>Výběrová káva</h3>
+          <p>Spolupracujeme s lokálními pražírnami a měníme nabídku sezónně. Espresso, filtr, alternativy – vždy čerstvé a s respektem k původu.</p>
+        </article>
+        <article class="card" data-animate>
+          <h3>Domácí dobroty</h3>
+          <p>Cheesecake, brownies i veganské koláče pečeme s láskou. Sladké i slané varianty k ranní kávě i odpolednímu psaní.</p>
+        </article>
+        <article class="card" data-animate>
+          <h3>Místo pro klid</h3>
+          <p>Koutky pro studium a práci, knihovnička na volné čtení, příjemná hudba. Dýchat, tvořit, být.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+      <h2 class="title" data-animate>Menu</h2>
+      <p class="sub" data-animate>Ochutnej to nejlepší v jednoduchém výběru. Ceny jsou férové a srozumitelné.</p>
+      <div class="menu">
+        <div class="menu-group" data-animate>
+          <h3>Káva</h3>
+          <div class="menu-item"><span>Espresso</span><span class="price">55 Kč</span></div>
+          <div class="menu-item"><span>Americano</span><span class="price">55 Kč</span></div>
+          <div class="menu-item"><span>Cappuccino</span><span class="price">65 Kč</span></div>
+          <div class="menu-item"><span>Flat white</span><span class="price">75 Kč</span></div>
+          <div class="menu-item"><span>Latte</span><span class="price">75 Kč</span></div>
+          <div class="menu-item"><span>Filtrovaná káva</span><span class="price">65 Kč</span></div>
+          <div class="menu-item"><span>Matcha latte</span><span class="price">85 Kč</span></div>
+          <div class="menu-item"><span>Ovesné/bezlaktózové mléko</span><span class="price">+10 Kč</span></div>
+        </div>
+        <div class="menu-group" data-animate>
+          <h3>Nápoje & dezerty</h3>
+          <div class="menu-item"><span>Domácí limonáda</span><span class="price">60 Kč</span></div>
+          <div class="menu-item"><span>Ledová káva</span><span class="price">75 Kč</span></div>
+          <div class="menu-item"><span>Cheesecake</span><span class="price">75 Kč</span></div>
+          <div class="menu-item"><span>Brownie</span><span class="price">75 Kč</span></div>
+          <div class="menu-item"><span>Toust: sýr & pesto</span><span class="price">89 Kč</span></div>
+          <div class="menu-item"><span>Avokádový toast</span><span class="price">109 Kč</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie">
+    <div class="container">
+      <h2 class="title" data-animate>Galerie nálad</h2>
+      <p class="sub" data-animate>Malý vizuální šepot – světlo, dřevo, keramika, káva. Nahraj sem později své fotky, zatím držíme místo.</p>
+      <div class="gallery">
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <div class="container">
+      <h2 class="title" data-animate>Kontakt & Rezervace</h2>
+      <p class="sub" data-animate>Najdeš nás kousek od centra – ruch zůstává před dveřmi. Těšíme se na tebe.</p>
+      <div class="contact-wrap">
+        <div class="contact-card" data-animate>
+          <form id="contact-form" aria-label="Kontaktní formulář">
+            <div class="field">
+              <label for="name">Jméno</label>
+              <input id="name" name="name" class="input" placeholder="Tvoje jméno" required />
+            </div>
+            <div class="field">
+              <label for="email">E‑mail</label>
+              <input id="email" name="email" type="email" class="input" placeholder="např. ty@domena.cz" required />
+            </div>
+            <div class="field">
+              <label for="message">Zpráva</label>
+              <textarea id="message" name="message" placeholder="Napiš nám…"></textarea>
+            </div>
+            <button class="btn primary" type="submit">Odeslat</button>
+            <p id="form-status" role="status" style="margin:10px 0 0;color:var(--muted)"></p>
+          </form>
+        </div>
+        <div class="contact-card" data-animate>
+          <h3>Kde a kdy</h3>
+          <p><strong>Adresa:</strong> <span id="addr">[Doplň adresu]</span></p>
+          <p><strong>Otevírací doba:</strong> 8:00–20:00 (denně)</p>
+          <p><strong>Instagram:</strong> <a href="#" id="ig">@u4zrnek</a></p>
+          <p><strong>Telefon:</strong> <a href="tel:+420000000000">+420 000 000 000</a></p>
+          <div style="margin-top:14px;display:grid;gap:10px">
+            <button class="btn" id="add-to-calendar">Přidat do kalendáře – otevřeno</button>
+            <button class="btn" id="copy-address">Kopírovat adresu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="foot" data-animate>
+        <h3>Naše filozofie</h3>
+        <p>Pomalejší tempo. Lepší káva. Lidské setkání. U 4 zrnek pěstujeme klid, který chutná po karamelu, kakau a světle prosyceném dřevu.</p>
+        <p class="credits">© <span id="year"></span> Kavárna u 4 zrnek • Všechna práva vyhrazena</p>
+      </div>
+      <div class="foot" data-animate>
+        <h3>Rychlé odkazy</h3>
+        <p><a href="#o-nas">O nás</a> • <a href="#menu">Menu</a> • <a href="#galerie">Galerie</a> • <a href="#kontakt">Kontakt</a></p>
+        <p><small>Design & kód v jednom souboru. Žádné externí knihovny.</small></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ----------------------
+    // Mobile nav
+    // ----------------------
+    const toggler = document.querySelector('.mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggler?.addEventListener('click', () => {
+      const open = toggler.getAttribute('aria-expanded') === 'true';
+      toggler.setAttribute('aria-expanded', String(!open));
+      mobileMenu?.classList.toggle('show');
+      mobileMenu.hidden = false;
+    });
+    mobileMenu?.addEventListener('click', e => {
+      if(e.target.closest('a')){
+        mobileMenu.classList.remove('show');
+        toggler.setAttribute('aria-expanded','false');
+      }
+    });
+
+    // ----------------------
+    // Smooth scroll for anchor links
+    // ----------------------
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const el = document.querySelector(id);
+        if (el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // ----------------------
+    // Intersection animations
+    // ----------------------
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en => {
+        if (en.isIntersecting) en.target.classList.add('in');
+      })
+    }, {threshold: .1});
+    document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+    // ----------------------
+    // Contact form (local demo)
+    // ----------------------
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Odesílám…';
+
+      // Demo odeslání – zde bys připojila vlastní backend / formulářovou službu
+      // Například: fetch('https://formspree.io/f/xyz', { method:'POST', body: new FormData(form) })
+      await new Promise(r => setTimeout(r, 700));
+      status.textContent = 'Díky! Ozveme se co nejdřív.';
+      form.reset();
+    });
+
+    // ----------------------
+    // Utilities
+    // ----------------------
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('copy-address')?.addEventListener('click', async () => {
+      const text = document.getElementById('addr').textContent.trim();
+      try{ await navigator.clipboard.writeText(text); alert('Adresa zkopírována ✔'); }catch{ alert('Nepodařilo se zkopírovat'); }
+    });
+
+    document.getElementById('add-to-calendar')?.addEventListener('click', () => {
+      // Vytvoří jednoduchý ICS soubor s otevírací dobou jako celodenní událostí
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth()+1).padStart(2,'0');
+      const d = String(now.getDate()).padStart(2,'0');
+      const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//U4Zrnek//CZ//\nBEGIN:VEVENT\nUID:${Date.now()}@u4zrnek\nDTSTAMP:${y}${m}${d}T080000Z\nSUMMARY:Kavárna u 4 zrnek – otevřeno dnes\nDESCRIPTION:Otevřeno 8:00–20:00. Těšíme se na tebe!\nDTSTART:${y}${m}${d}T060000Z\nDTEND:${y}${m}${d}T180000Z\nEND:VEVENT\nEND:VCALENDAR`;
+      const blob = new Blob([ics], {type: 'text/calendar'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'u4zrnek-otevreno.ics';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

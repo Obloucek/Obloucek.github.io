@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt | Kavárna u 4 zrnek • Adresa, otevírací doba, rezervace</title>
+  <meta name="description" content="Kontaktní informace Kavárny u 4 zrnek v Praze. Adresa, otevírací doba 8-20, telefon, rezervace a kontaktní formulář. Najdi nás kousek od centra." />
+  <meta name="keywords" content="kontakt kavárna Praha, adresa kavárna, otevírací doba, rezervace kavárna, telefon kavárna" />
+  <link rel="canonical" href="https://obloucek.github.io/kontakt.html" />
+  <meta property="og:title" content="Kontakt | Kavárna u 4 zrnek" />
+  <meta property="og:description" content="Najdi nás kousek od centra Prahy. Otevřeno denně 8:00-20:00. Těšíme se na tebe!" />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="Kavárna u 4 zrnek">
+        <span class="beans" aria-hidden="true">
+          <span class="bean"></span><span class="bean"></span><span class="bean"></span><span class="bean"></span>
+        </span>
+        <span>Kavárna u 4 zrnek</span>
+      </a>
+      <nav aria-label="Hlavní navigace">
+        <ul>
+          <li><a href="index.html">Domů</a></li>
+          <li><a href="o-nas.html">O nás</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="nas-pribeh.html">Náš příběh</a></li>
+          <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otevřít menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <ul>
+        <li><a href="index.html">Domů</a></li>
+        <li><a href="o-nas.html">O nás</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="nas-pribeh.html">Náš příběh</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="breadcrumb">
+      <div class="container">
+        <a href="index.html">Domů</a><span>›</span>Kontakt
+      </div>
+    </div>
+
+    <section class="page-header">
+      <div class="container">
+        <h1 class="title" data-animate>Kontakt & Rezervace</h1>
+        <p class="sub" data-animate>
+          Najdeš nás kousek od centra — ruch zůstává před dveřmi. Těšíme se na tebe.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="contact-wrap">
+          <div class="contact-card" data-animate>
+            <h2>Napiš nám</h2>
+            <form id="contact-form" aria-label="Kontaktní formulář">
+              <div class="field">
+                <label for="name">Jméno</label>
+                <input id="name" name="name" class="input" placeholder="Tvoje jméno" required />
+              </div>
+              <div class="field">
+                <label for="email">E‑mail</label>
+                <input id="email" name="email" type="email" class="input" placeholder="např. ty@domena.cz" required />
+              </div>
+              <div class="field">
+                <label for="subject">Předmět</label>
+                <select id="subject" name="subject" class="input">
+                  <option value="obecny">Obecný dotaz</option>
+                  <option value="rezervace">Rezervace stolu</option>
+                  <option value="akce">Soukromá akce</option>
+                  <option value="spoluprace">Nabídka spolupráce</option>
+                  <option value="jine">Jiné</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="message">Zpráva</label>
+                <textarea id="message" name="message" placeholder="Napiš nám…"></textarea>
+              </div>
+              <button class="btn primary" type="submit">Odeslat</button>
+              <p id="form-status" role="status" style="margin:10px 0 0;color:var(--muted)"></p>
+            </form>
+          </div>
+          <div class="contact-card" data-animate>
+            <h2>Kde a kdy</h2>
+            <p><strong>Adresa:</strong></p>
+            <p id="addr">[někde v Praze]</p>
+
+            <p style="margin-top:15px"><strong>Otevírací doba:</strong></p>
+            <p>Pondělí – Neděle: 8:00–20:00</p>
+            <p style="font-size:.9rem;color:var(--muted)">Včetně svátků (mimo 24.-26.12. a 1.1.)</p>
+
+            <p style="margin-top:15px"><strong>Telefon:</strong></p>
+            <p><a href="tel:+420123456789">+420 123 456 789</a></p>
+
+            <p style="margin-top:15px"><strong>E-mail:</strong></p>
+            <p><a href="mailto:ahoj@u4zrnek.cz">ahoj@u4zrnek.cz</a></p>
+
+            <p style="margin-top:15px"><strong>Instagram:</strong></p>
+            <p><a href="https://instagram.com/u4zrnek" target="_blank" rel="noopener">@u4zrnek</a></p>
+
+            <div style="margin-top:20px;display:grid;gap:10px">
+              <button class="btn" id="add-to-calendar">Přidat do kalendáře</button>
+              <button class="btn" id="copy-address">Kopírovat adresu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="content-block" data-animate>
+          <h2>Jak se k nám dostaneš</h2>
+
+          <h3>Městskou hromadnou dopravou</h3>
+          <p>
+            Nejbližší zastávka tramvaje je 3 minuty chůze. Jezdí sem linky XX, XX a XX.
+            Z metra (stanice XXXX, linka X) je to asi 7 minut pěšky směrem k řece.
+          </p>
+
+          <h3>Autem</h3>
+          <p>
+            Parkování v okolí je zónové (modrá zóna). Nejbližší veřejné parkoviště je XX.
+            Doporučujeme MHD nebo kolo — parkování v centru je vždycky boj.
+          </p>
+
+          <h3>Na kole</h3>
+          <p>
+            Přímo před kavárnou máme stojany na kola. Pokud jedeš na sdíleném kole (Rekola, Nextbike),
+            virtuální stanice je kousek od nás.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="two-col">
+          <div class="content-block" data-animate>
+            <h2>Rezervace stolu</h2>
+            <p>
+              Pro běžnou návštěvu rezervace nepotřebuješ — fungujeme na principu "kdo dřív přijde".
+              Ale pokud jdete větší skupina (5+ lidí) nebo chceš mít jistotu místa v konkrétní čas,
+              napiš nám nebo zavolej.
+            </p>
+            <p>
+              <strong>Rezervace přijímáme:</strong>
+            </p>
+            <ul>
+              <li>Telefonicky: <a href="tel:+420123456789">+420 123 456 789</a></li>
+              <li>E-mailem: <a href="mailto:ahoj@u4zrnek.cz">ahoj@u4zrnek.cz</a></li>
+              <li>Přes formulář výše</li>
+              <li>DM na Instagramu</li>
+            </ul>
+            <p>
+              Prosíme o rezervaci minimálně den předem. V pátek a sobotu večer doporučujeme rezervovat
+              2-3 dny dopředu.
+            </p>
+          </div>
+          <div class="content-block" data-animate>
+            <h2>Soukromé akce</h2>
+            <p>
+              Pořádáš oslavu, firemní meeting nebo malý workshop? Můžeme ti vyhradit část kavárny
+              nebo celý prostor mimo běžnou otevírací dobu.
+            </p>
+            <p>
+              <strong>Co nabízíme:</strong>
+            </p>
+            <ul>
+              <li>Kapacita až 30 osob</li>
+              <li>Vlastní menu na míru</li>
+              <li>Možnost zapůjčení projektoru</li>
+              <li>Stabilní Wi-Fi pro prezentace</li>
+              <li>Catering domácích dezertů</li>
+            </ul>
+            <p>
+              Pro nezávaznou poptávku nás kontaktuj s předběžným datem, počtem hostů a představou o akci.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="content-block" data-animate>
+          <h2>Často kladené dotazy</h2>
+
+          <h3>Máte Wi-Fi?</h3>
+          <p>Ano, rychlé a stabilní. Heslo dostaneš na baru.</p>
+
+          <h3>Můžu si u vás nabít telefon/notebook?</h3>
+          <p>Samozřejmě. Máme dostatek zásuvek u většiny stolů, včetně studijních koutků.</p>
+
+          <h3>Jsou u vás psi vítáni?</h3>
+          <p>Ano! Máme pro ně misku s vodou. Jen prosíme, aby byli na vodítku a nevyrušovali ostatní hosty.</p>
+
+          <h3>Přijímáte platební karty?</h3>
+          <p>Ano, přijímáme karty i platby mobilem (Apple Pay, Google Pay). Hotovost samozřejmě taky.</p>
+
+          <h3>Máte bezbariérový přístup?</h3>
+          <p>Vstup je v úrovni ulice bez schodů. Toalety jsou přístupné z přízemí.</p>
+
+          <p style="margin-top:20px">
+            <a href="o-nas.html" class="btn primary">Více o nás</a>
+            <a href="menu.html" class="btn" style="margin-left:10px">Prohlédnout menu</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="foot" data-animate>
+        <h3>Kavárna u 4 zrnek</h3>
+        <p>Pomalejší tempo. Lepší káva. Lidské setkání.</p>
+        <p class="credits">© <span id="year"></span> Kavárna u 4 zrnek • Všechna práva vyhrazena</p>
+        <p class="credits">Hudba: <a href="https://soundwave94.webnode.cz/" target="_blank" rel="noopener">Soundwave94</a></p>
+      </div>
+      <div class="foot" data-animate>
+        <h3>Rychlé odkazy</h3>
+        <p><a href="index.html">Domů</a> • <a href="o-nas.html">O nás</a> • <a href="menu.html">Menu</a> • <a href="galerie.html">Galerie</a> • <a href="nas-pribeh.html">Náš příběh</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,4 +1,43 @@
 // ----------------------
+// Theme toggle
+// ----------------------
+const themeToggle = document.querySelector('.theme-toggle');
+const root = document.documentElement;
+
+// Check for saved preference or system preference
+function getPreferredTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function setTheme(theme) {
+  root.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// Initialize theme
+setTheme(getPreferredTheme());
+
+// Toggle on click
+themeToggle?.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// ----------------------
+// Header scroll effect
+// ----------------------
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header?.classList.add('scrolled');
+  } else {
+    header?.classList.remove('scrolled');
+  }
+});
+
+// ----------------------
 // Mobile nav
 // ----------------------
 const toggler = document.querySelector('.mobile-toggle');
